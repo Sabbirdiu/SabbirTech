@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import EmptyCart from '../cart/EmptyCart';
 import CartItem from '../cart/cartItem';
 import { CartContext } from '../context/Cart';
+import { Link } from 'react-router-dom';
 const Cart = () => {
   let user = false;
   const { cart, total } = useContext(CartContext);
@@ -10,9 +11,22 @@ const Cart = () => {
     return <EmptyCart />;
   }
   return (
-    <div>
-      <h1>Cart page</h1>
-    </div>
+    <section className='cart-items section'>
+      <h2>your cart</h2>
+      {cart.map((item) => {
+        return <CartItem key={item.id} {...item} />;
+      })}
+      <h2>total : ${total}</h2>
+      {user ? (
+        <Link to='/checkout' className='btn btn-primary btn-block'>
+          Checkout
+        </Link>
+      ) : (
+        <Link to='/login' className='btn btn-outline-primary '>
+          Login
+        </Link>
+      )}
+    </section>
   );
 };
 

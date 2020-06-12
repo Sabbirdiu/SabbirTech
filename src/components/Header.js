@@ -22,22 +22,22 @@ const Header = (props) => {
               </Link>
             </NavItem>
             <NavItem>
-              <Link className='ml-5 text- nav-link' to='products'>
+              <Link className='ml-5 text- nav-link' to='/products'>
                 Products
               </Link>
             </NavItem>
             <NavItem>
-              <Link className='ml-5 text- nav-link' to='about'>
+              <Link className='ml-5 text- nav-link' to='/about'>
                 About
               </Link>
             </NavItem>
             <NavItem>
-              <Link className='ml-5 text- nav-link' to='cart'>
+              <Link className='ml-5 text- nav-link' to='/cart'>
                 Card
               </Link>
             </NavItem>
             <NavItem>
-              <Link className='ml-5 text- nav-link' to='login'>
+              <Link className='ml-5 text- nav-link' to='/login'>
                 Login
               </Link>
             </NavItem>
