@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CartContext } from '../context/Cart';
 import './cartItem.scss';
 
-export default function ({ id, image, title, price, amount }) {
+const CartItem = ({ id, image, title, price, amount }) => {
   const { removeItem, increaseQuantity, decreaseQuantity } = useContext(
     CartContext
   );
@@ -42,4 +42,5 @@ export default function ({ id, image, title, price, amount }) {
       </span>
     </div>
   );
-}
+};
+export default CartItem;

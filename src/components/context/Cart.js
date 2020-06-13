@@ -6,7 +6,7 @@ import localCart from '../utils/localCart';
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(localCart);
+  const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState(0);
   useEffect(() => {
@@ -51,6 +51,25 @@ const CartProvider = ({ children }) => {
       );
     }
   };
+  //Add to cart
+  const addToCart = (product) => {
+    // console.log(product);
+    const {
+      id,
+      image: { url },
+      title,
+      price,
+    } = product;
+    const item = [...cart].find((item) => item.id === id);
+    if (item) {
+      increaseQuantity(id);
+      return;
+    } else {
+      const newItem = { id, image: url, title, price, amount: 1 };
+      const newCart = [...cart, newItem];
+      setCart(newCart);
+    }
+  };
   return (
     <CartContext.Provider
       value={{
@@ -60,6 +79,7 @@ const CartProvider = ({ children }) => {
         removeItem,
         increaseQuantity,
         decreaseQuantity,
+        addToCart,
       }}
     >
       {children}
