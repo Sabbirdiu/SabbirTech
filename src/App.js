@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // pages
 import About from './components/pages/About';
 import Cart from './components/pages/Cart';
-// import Checkout from './components/pages/Checkout';
+import Checkout from './components/pages/Checkout';
 import Error from './components/pages/Error';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
@@ -25,6 +25,7 @@ function App() {
 
           <Route exact path='/login' component={Login} />
           <Route exact path='/Cart' component={Cart} />
+          <Route exact path='/Checkout' component={Checkout} />
           <Route exact path='*' component={Error} />
         </Switch>
       </Router>

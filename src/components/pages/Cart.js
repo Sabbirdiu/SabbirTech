@@ -3,22 +3,42 @@ import EmptyCart from '../cart/EmptyCart';
 import CartItem from '../cart/cartItem';
 import { CartContext } from '../context/Cart';
 import { Link } from 'react-router-dom';
+import './Cart.scss';
 const Cart = () => {
-  let user = false;
+  let user = true;
   const { cart, total } = useContext(CartContext);
   console.log(cart, total);
   if (cart.length === 0) {
     return <EmptyCart />;
   }
   return (
-    <section className='cart-items section'>
-      <h2>your cart</h2>
+    <div className='checkout-page'>
+      <div className='checkout-header'>
+        <div className='header-block'>
+          <span>Product</span>
+        </div>
+        <div className='header-block'>
+          <span>Description</span>
+        </div>
+        <div className='header-block'>
+          <span>Quantity</span>
+        </div>
+        <div className='header-block'>
+          <span>Price</span>
+        </div>
+        <div className='header-block'>
+          <span>Remove</span>
+        </div>
+      </div>
+
       {cart.map((item) => {
         return <CartItem key={item.id} {...item} />;
       })}
-      <h2>total : ${total}</h2>
+      <div className='total'>
+        <span>TOTAL:${total}</span>
+      </div>
       {user ? (
-        <Link to='/checkout' className='btn btn-primary btn-block'>
+        <Link to='/checkout' className='btn btn-outline-primary'>
           Checkout
         </Link>
       ) : (
@@ -26,7 +46,7 @@ const Cart = () => {
           Login
         </Link>
       )}
-    </section>
+    </div>
   );
 };
 
