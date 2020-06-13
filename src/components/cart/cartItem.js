@@ -3,7 +3,9 @@ import { CartContext } from '../context/Cart';
 import './cartItem.scss';
 
 export default function ({ id, image, title, price, amount }) {
-  const { removeItem, increaseQuantity } = useContext(CartContext);
+  const { removeItem, increaseQuantity, decreaseQuantity } = useContext(
+    CartContext
+  );
   return (
     <div className='checkout-item'>
       <div className='image-container'>
@@ -11,7 +13,14 @@ export default function ({ id, image, title, price, amount }) {
       </div>
       <span className='name'>{title}</span>
       <span className='quantity'>
-        <div className='arrow'>-</div>
+        <div
+          onClick={() => {
+            decreaseQuantity(id, amount);
+          }}
+          className='arrow'
+        >
+          -
+        </div>
         <span className='value'>{amount}</span>
         <div
           onClick={() => {

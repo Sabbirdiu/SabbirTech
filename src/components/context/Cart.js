@@ -37,9 +37,30 @@ const CartProvider = ({ children }) => {
       })
     );
   };
+  const decreaseQuantity = (id, amount) => {
+    if (amount === 1) {
+      removeItem(id);
+      return;
+    } else {
+      setCart(
+        [...cart].map((item) => {
+          return item.id === id
+            ? { ...item, amount: item.amount - 1 }
+            : { ...item };
+        })
+      );
+    }
+  };
   return (
     <CartContext.Provider
-      value={{ cart, total, cartItems, removeItem, increaseQuantity }}
+      value={{
+        cart,
+        total,
+        cartItems,
+        removeItem,
+        increaseQuantity,
+        decreaseQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
