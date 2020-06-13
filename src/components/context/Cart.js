@@ -16,15 +16,19 @@ const CartProvider = ({ children }) => {
       return (total += cartItem.amount);
     }, 0);
     setCartItems(newCartItems);
-    //cart total
+    // total amount in cart all product
     let newTotal = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount * cartItem.price);
     }, 0);
     newTotal = parseFloat(newTotal.toFixed(2));
     setTotal(newTotal);
   }, [cart]);
+  // remove the item from the cart
+  const removeItem = (id) => {
+    setCart([...cart].filter((item) => item.id !== id));
+  };
   return (
-    <CartContext.Provider value={{ cart, total, cartItems }}>
+    <CartContext.Provider value={{ cart, total, cartItems, removeItem }}>
       {children}
     </CartContext.Provider>
   );

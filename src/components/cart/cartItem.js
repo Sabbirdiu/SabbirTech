@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../context/Cart';
 import './cartItem.scss';
 
-const cartItem = ({ id, image, title, price, amount }) => {
+export default function ({ id, image, title, price, amount }) {
+  const { removeItem } = useContext(CartContext);
   return (
     <div className='checkout-item'>
       <div className='image-container'>
@@ -15,9 +16,14 @@ const cartItem = ({ id, image, title, price, amount }) => {
         <div className='arrow'>+</div>
       </span>
       <span className='price'>$‎{price}</span>
-      <span className='remove-button'>&#10005;</span>
+      <span
+        onClick={() => {
+          removeItem(id);
+        }}
+        className='remove-button'
+      >
+        &#10005;
+      </span>
     </div>
   );
-};
-
-export default cartItem;
+}

@@ -11,6 +11,7 @@ const Cart = () => {
   if (cart.length === 0) {
     return <EmptyCart />;
   }
+
   return (
     <div className='checkout-page'>
       <div className='checkout-header'>
