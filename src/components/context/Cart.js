@@ -16,7 +16,7 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     //local storage
     localStorage.setItem('cart', JSON.stringify(cart));
-    //cart items
+    //cart items count
     let newCartItems = cart.reduce((total, cartItem) => {
       return (total += cartItem.amount);
     }, 0);

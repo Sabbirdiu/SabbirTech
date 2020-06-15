@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CartCount from './cart/CartCount';
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +33,8 @@ const Header = (props) => {
               </Link>
             </NavItem>
             <NavItem>
-              <Link className='ml-5 text- nav-link' to='/cart'>
-                Card
+              <Link className='ml-5 mb-1 text- nav-link' to='/cart'>
+                <CartCount />
               </Link>
             </NavItem>
             <NavItem>
